@@ -15,11 +15,6 @@ module.exports = mongoose.model('Blog', {
     t_3: String,
     t_4: String
   }
-  // hidden: Boolean,
-  // img: {
-  //   data: Buffer,
-  //   contentType: String
-  // }
 
 
 });

@@ -1,6 +1,6 @@
 {
   "name": "woofrepublic_blog",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A blog site for pets",
   "main": "server.js",
   "private": true,

@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('BlogCtrl', []).controller('BlogController',['$scope', '$http', function($scope, $http) {
-  var blogUrl = 'http://localhost:8080/api/blogs';
+  var blogUrl = 'http://woof-republic.herokuapp.com/api/blogs';
     let vm = this;
     vm.blogs = [];
     vm.newest;
