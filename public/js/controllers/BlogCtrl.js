@@ -1,29 +1,32 @@
 
 'use strict';
 
-angular.module('BlogCtrl', []).controller('BlogController',['$scope', '$http', function($scope, $http) {
+angular.module('BlogCtrl', []).controller('BlogController',['$scope','$location', '$http', function($scope,$location, $http) {
   var blogUrl = 'http://woof-republic.herokuapp.com/api/blogs';
+  var clientUrl = 'http://localhost:8080/posts'
     let vm = this;
     vm.blogs = [];
-    vm.newest;
-    vm.idUrl;
+    vm.numLimit = '1';
+    // vm.newest;
+    // vm.idUrl = [];
 
 
 
 vm.getBlogs = function(){
   $http.get(blogUrl)
       .then(function(data){
-          // console.log(data.data.reverse());
           vm.blogs = data.data.reverse();
 
-          var nlen = Number(vm.blogs.length -1);
-          var strlen = String(nlen);
-
-          vm.newest = data.data[strlen];
-          // console.log(vm.newest);
-
-      });
+          for(var i =0; i < data.data.length; i ++){
+            var blogId = data.data[i]._id;
+            vm.idUrl = clientUrl + '/' + blogId;
+            console.log(vm.idUrl);
+            }
+          });
 };
+vm.readMore = function(){
+vm.numLimit = 1000;
+}
 
 vm.createBlog= function(blog){
     $http.post(blogUrl, blog)

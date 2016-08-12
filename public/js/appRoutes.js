@@ -12,7 +12,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
      .when('/admin', {
          templateUrl: 'views/blog.html',
          controller: 'BlogController'
-     });
+     })
+
+     .when('/:_id', {
+           templateUrl: 'views/blog-id.html',
+           controller: 'IdController'
+         });
 
  $locationProvider.html5Mode(true);
 

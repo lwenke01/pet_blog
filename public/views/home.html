@@ -47,13 +47,15 @@
         <div class="post-img-content">
             <img src="{{blog.imgURL}}" class="img-responsive" />
             <span class="post-date">{{blog.date | date: MM/dd/yyyy}}</span>
-
         </div>
       </div>
         <h4 class="article-title">{{blog.title}}</h4>
         <br>
-        <p class="article-contents">
-          {{blog.body}} [...] <a href="/{{blog._id}}"><i>Read More</i></a>
+        <p class="article-contents" ng-init="blgCtrl.getUrl()">
+					{{blgCtrl.idUrl}}
+          {{blog.body | limitTo:numLimit}} [...]
+					<button type="button" ng-click="readMore()">Read More</button>
+					 <a ng-click="readMore()" href="#"><i>Read More</i></a>
         </p>
         <br>
 
@@ -70,7 +72,7 @@
           <time datetime="{{blog.date | date: MM/dd/yyyy}}" itemprop="datePublished" pubdate>{{blog.date | date: MM/dd/yyyy}}</time>
           by
           <a href="#">{{blog.author}}</a>
-          <a href="http://chalkkids.co.uk/2016/08/joining-forces-mums-kids-holiday/#disqus_thread" data-disqus-identifier="{{blog._id}} http://localhost:8080/blogs/?p={{blog._id}}">Leave a comment</a>
+          <a href="/{{blog._id}}" data-disqus-identifier="http://localhost:8080/blogs/?p={{blog._id}}">Leave a comment</a>
           <a href="#">Comments<span class="badge">42</span></a>
         </section>
 
@@ -82,7 +84,8 @@
   </div>
 </div>
 <!-- POST Block END -->
-
+<a name="{{blog._id}}" ng-repeat="blog in blgCtrl.blogs"></a>
+{{blog.title}}
 
 
 
