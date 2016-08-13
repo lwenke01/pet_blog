@@ -21,12 +21,12 @@ var router = express.Router();
 
 
 //CORS
-app.use((req, res, next)=>{
-  res.header('Access-Control-Allow-Origin', 'https://woof-republic.herokuapp.com/api/blogs');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  next();
-});
+// app.use((req, res, next)=>{
+//   res.header('Access-Control-Allow-Origin', 'https://woof-republic.herokuapp.com/api/blogs');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   next();
+// });
 //get all data
 // parse application/json
 app.use(bodyParser.json());
