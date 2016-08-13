@@ -1,0 +1,46 @@
+<section id="log-in-img"ng-controller="AdminController as adminctrl" ng-cloak>
+  <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand page-scroll" href="#page-top">WOOF! Republic</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="hidden active">
+                      <a href="#page-top"></a>
+                  </li>
+
+                          <a class="page-scroll" href="/">Home</a>
+                      </li>
+                  </li>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+  </nav>
+
+<a name="login"></a>
+  <section class="signin-form">
+    <form method="post"ng-submit="adminctrl.loginUser()">
+      <h3 id="logo">Admin Log In</h3>
+      <input type="text" id="username" name="username" placeholder="enter username..." autocomplete="off" required  ng-model="adminctrl.username">
+      <input type="password" id="password" name="password" placeholder=" enter password.." autocomplete="off" required ng-model="adminctrl.password">
+
+      <input type="submit" name="submit" value="Log In" />
+      <a href="#signup">Sign Up Here</a>
+    </form>
+
+  </section>
+
+
+</section>

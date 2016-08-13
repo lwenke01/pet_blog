@@ -1,7 +1,25 @@
-<section ng-cloak ng-controller="IdController as idCtrl" ng-init="idCtrl.getIds()">
-	<a name="idCtrl.bIds._id"></a>
 
 
+<section id="portfolio" >
 
-{{idCtrl.bIds._id}}
- </section>
+		<div class="container">
+				
+				<div class="row">
+						<div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="blog in blgCtrl.blogs">
+								<a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+										<div class="portfolio-hover">
+												<div class="portfolio-hover-content">
+														<i class="fa fa-plus fa-3x"></i>
+												</div>
+										</div>
+										<img src="{{blog.imgURL}}" class="img-responsive" alt="">
+								</a>
+								<div class="portfolio-caption">
+										<h4>{{blog.title}}</h4>
+										<p class="text-muted">{{blog.body}}</p>
+								</div>
+						</div>
+
+				</div>
+		</div>
+</section>

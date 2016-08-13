@@ -1,52 +1,60 @@
 
+<a name="admin"></a>
 <section ng-cloak ng-controller="BlogController as blgCtrl" ng-init="blgCtrl.getBlogs()">
-  <a name="admin"></a>
- <!-- <a name="{{blog._id}}"></a>
-{{blog.title}} -->
-  <!-- <div class="page-header">
-  <h1>WOOF! Republic <small>Blogs</small></h1>
-</div> -->
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand page-scroll" href="#page-top">WOOF! Republic</a>
+          </div>
 
-<!-- Navigation Block -->
-<div class="bloc l-bloc" id="nav-bloc">
-	<div class="container">
-		<nav class="navbar row">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">WOOF! Republic</a>
-				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
-					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="collapse navbar-collapse navbar-1">
-				<ul class="site-navigation nav">
-					<li>
-						<a href="/about">about</a>
-					</li>
-					<li>
-						<a href="/blogs">blog</a>
-					</li>
-					<li>
-						<a href="/">home</a>
-					</li>
-					<li>
-						<a href="/admin">admin</a>
-					</li>
-					<li>
-						<a href="#">contacts</a>
-					</li>
-          </ul>
-			</div>
-		</nav>
-	</div>
-</div>
-
-
-
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="hidden active">
+                      <a href="#page-top"></a>
+                  </li>
+                  <!-- <li class="">
+                      <a class="page-scroll" href="#guide">City Guides</a>
+                  </li> -->
+                  <!-- <li class="">
+                      <a class="page-scroll" href="#portfolio">Blog</a>
+                  </li>
+                  <li class="">
+                      <a class="page-scroll" href="#about">About</a>
+                  </li> -->
+                  <!-- <li class="">
+                      <a class="page-scroll" href="#team">Team</a>
+                  </li> -->
+                  <!-- <li class="">
+                      <a class="page-scroll" href="#instagram">Instagram</a>
+                  </li> -->
+                  <!-- <li class="">
+                      <a class="page-scroll" href="#contact">Contact</a>
+                      <li class=""> -->
+                          <a class="page-scroll" href="/">Log Out</a>
+                      </li>
+                  </li>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+  </nav>
+<div class="container">
 
 <h1>Blog</h1>
 <a href="#create">Create Post</a>
 <a href="#edit">Edit/Delete</a>
 <a name="create"></a>
+<div class="row">
 <div class="new-blog">
   <h2>New Blog Post</h2>
   <form class="new-form" ng-submit="blgCtrl.createBlog(blgCtrl.newBlog)">
@@ -64,8 +72,10 @@
     <button type="submit">POST</button>
   </form>
 </div>
+</div>
 <br>
 <a name="edit"></a>
+<div class="row">
 <div class="pull-left col-md-2 column" >
   Blog Posts
   <ul  ng-repeat="blog in blgCtrl.blogs | orderBy: '-date'">
@@ -104,8 +114,12 @@
     </section>
   </ul>
 </div>
+</div>
 
 
+
+
+</div>
 
 
 

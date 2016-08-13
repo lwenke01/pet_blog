@@ -16,14 +16,6 @@ var port = process.env.PORT || 8080;
 
 //connect to mongoDB database
 mongoose.connect(db.url);
-//
-// MONGOLAB_URI=mongodb://lwenke01:buster01@ds153765.mlab.com:53765/lisa-db
-// 'mongodb://lwenke01:buster01@ds153765.mlab.com:53765/lisa-db'
-//
-// mongoose.connect(process.env.MONGOLAB_URI, function (error) {
-//    if (error) console.error(error);
-//    else console.log('mongo connected');
-// });
 
 var router = express.Router();
 

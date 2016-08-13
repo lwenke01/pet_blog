@@ -1,11 +1,30 @@
 {
-    "name": "starter-node-angular",
-    "version": "1.0.0",
-    "dependencies": {
-        "bootstrap": "latest",
-        "font-awesome": "latest",
-        "animate.css": "latest",
-        "angular": "latest",
-        "angular-route": "latest"
-    }
+  "name": "starter-node-angular",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "fontawesome#^4.6.3",
+    "animate.css": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "bootstrap-sass": "bootstrap-sass-official#^3.3.7"
+  },
+  "homepage": "https://github.com/lwenke01/pet_blog",
+  "authors": [
+    "lwenke01 <lwenke@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#^3.3.7"
+  }
 }

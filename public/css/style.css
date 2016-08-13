@@ -1,3 +1,6 @@
+
+
+
 html,body{
     height: 100%;
        margin: 0;
@@ -64,12 +67,18 @@ article>.post-meta {
 
 }
 .article-contents {
-      height: 14rem;
+
         font-family: 'Lato', sans-serif;
         line-height: 1.2em;
-
-            font-size: larger;
+        font-size: larger;
 }
+
+.article-contents>p {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 14rem;
+}
+
 .post-meta {
   clear: both;
   height: 3em;
