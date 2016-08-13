@@ -15,7 +15,15 @@ body {
   font-family: 'Lato', sans-serif;
 
 }
-
+.portfolio-meta {
+  border-bottom: lightgrey solid 1px;
+border-top: lightgrey solid 1px;
+display: inline-flex;
+flex-direction: row;
+justify-content: center;
+width: 20em;
+padding-top: 1em;
+}
 .container {
   margin: 0 auto;
     width: 95%;

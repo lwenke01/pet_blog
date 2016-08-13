@@ -9,7 +9,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand page-scroll" href="#page-top">WOOF! Republic</a>
+  <a class="navbar-brand page-scroll" href="#page-top"><span class="span1">WOOF! Republic </span><span class="span2"> Pet Lifestyle Experts</span></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -32,15 +32,16 @@
 <a name="login"></a>
   <section class="signin-form">
     <form method="post"ng-submit="adminctrl.loginUser()">
-      <h3 id="logo">Admin Log In</h3>
-      <input type="text" id="username" name="username" placeholder="enter username..." autocomplete="off" required  ng-model="adminctrl.username">
-      <input type="password" id="password" name="password" placeholder=" enter password.." autocomplete="off" required ng-model="adminctrl.password">
+      <h3 id="logo">Admin Log In</h3><br>
+      <input type="text" id="username" name="username" placeholder="enter username..." autocomplete="off" required  ng-model="adminctrl.username"><br>
+      <input type="password" id="password" name="password" placeholder=" enter password.." autocomplete="off" required ng-model="adminctrl.password"><br>
 
-      <input type="submit" name="submit" value="Log In" />
-      <a href="#signup">Sign Up Here</a>
+      <input id="admin-submit"type="submit" name="submit" value="Log In" />
+
     </form>
 
   </section>
 
 
 </section>
+<custom-footer></custom-footer>

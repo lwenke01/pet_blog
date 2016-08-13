@@ -1,8 +1,4 @@
-/*!
- * Start Bootstrap - Agency Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
+
 
 body {
     overflow-x: hidden;
@@ -11,12 +7,15 @@ body {
 
 }
 .new-form {
-  width: 20em;
-height: 30em;
-background-color: blue;
+/*width: 20em;
+height: 30em;*/
+/*background-color: blue;*/
 padding: 1em;
+float: left;
 }
-
+#blog-posts {
+  background-color: orangered;
+}
 .new-form>input {
   width: 25em;
   height: 3em;
@@ -188,7 +187,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default {
     border-color: transparent;
-    background-color: #222;
+    background-color: white;
     height: 8em;
 }
 
@@ -227,7 +226,7 @@ fieldset[disabled] .btn-xl.active {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-    color: #fff;
+    /*color: #fff;*/
 }
 
 .navbar-default .nav li a:hover,
@@ -271,15 +270,43 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink {
         padding: 10px 0;
-        background-color: #222;
+        background-color: white;
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
         font-size: 1.5em;
+            padding-top: 1.5em;
     }
 
 }
 
+#logo {
+  color: white;
+}
+
+#log-in-img {
+  background-color: rgba(255,69,0,0.7);
+}
+.signin-form {
+padding: 3em;
+text-align: center;
+}
+.signin-form input {
+  margin: 1em;
+  border-radius: 25px;
+  padding: 1em;
+  border: rgba(149,230,233,0.5) solid;
+  width: 27em;
+}
+
+
+#admin-submit {
+  width: 10em;
+  color: white;
+  border-color: rgba(55,55,55,0.9);
+  background-color: rgba(55,55,55,0.9);
+
+}
 
 
 header {
@@ -296,7 +323,7 @@ header {
 }
 
 header .intro-text {
-    padding-top: 100px;
+    padding-top: 300px;
     padding-bottom: 50px;
 }
 
@@ -316,6 +343,13 @@ header .intro-text .intro-heading {
     font-weight: 700;
     line-height: 50px;
 }
+
+.intro-heading h3 {
+  color: white;
+    float: right;
+    margin-top: 3em;
+    font-size: x-large;
+}
 .header-bar {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -323,7 +357,25 @@ header .intro-text .intro-heading {
     border-top: lightgrey 1px solid;
     margin-top: 1em;
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 
+}
+
+#nav-icons {
+  float: right;
+  background-color: white;
+  margin-top: 3em;
+margin-left: 5em;
+}
+#nav-icons li a {
+  background-color: white;
+      color: darkgrey;
+      font-size: xx-large;
+}
+.navbar-right {
+  margin-bottom: -3em;
 }
 
 .col-sm-4 {
@@ -343,13 +395,13 @@ header .intro-text .intro-heading {
 }
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 300px;
+        /*padding-top: 300px;*/
         padding-bottom: 200px;
     }
-    /*ul.nav.navbar-nav {
-      display: none;
+    ul .nav .navbar-nav {
+          margin-bottom: -3em;
 
-    }*/
+    }
 
     header .intro-text .intro-lead-in {
         margin-bottom: 25px;
@@ -357,6 +409,7 @@ header .intro-text .intro-heading {
         font-size: 40px;
         font-style: italic;
         line-height: 40px;
+            float: left;
     }
 
     header .intro-text .intro-heading {
@@ -391,9 +444,11 @@ section h3.section-subheading {
 .about {
   display: flex;
   }
-/*p {
-  text-align: left;
-}*/
+.span1 {
+  font-size: xx-large;
+color: orangered;
+}
+}
 @media(min-width:768px) {
     section {
         padding: 150px 0;
@@ -465,6 +520,10 @@ section h3.section-subheading {
 #portfolio .portfolio-item .portfolio-caption h4 {
     margin: 0;
     text-transform: none;
+    text-transform: uppercase;
+    text-align: left;
+    width: 18em;
+    margin-left: -1.5em;
 }
 
 #portfolio .portfolio-item .portfolio-caption p {
@@ -476,10 +535,34 @@ section h3.section-subheading {
     height: 24rem;
     overflow-wrap: break-word;
     font-size: inherit;
+    text-align: left;
+    width: 18em;
+    margin-left: -1.5em;
 }
 
 #portfolio * {
     z-index: 2;
+
+}
+.portfolio-meta {
+  border-bottom: lightgrey solid 1px;
+border-top: lightgrey solid 1px;
+display: inline-flex;
+flex-direction: row;
+/*justify-content: center;*/
+width: 20em;
+padding-top: 1em;
+margin-right: .5em;
+/*margin-left: -1em;*/
+}
+.portfolio-meta p {
+  float: left;
+      margin-right: 1em;
+}
+.portfolio-meta p span {
+  float: left;
+      margin-right: 1em;
+      color: lightgrey;
 }
 
 @media(min-width:767px) {
@@ -807,7 +890,7 @@ ul.social-buttons li a {
     line-height: 40px;
     outline: 0;
     color: #fff;
-    background-color: #222;
+    background-color: grey;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     transition: all .3s;
