@@ -6,7 +6,8 @@ angular.module('BlogCtrl', []).controller('BlogController',['$scope','$location'
   var clientUrl = 'http://localhost:8080/posts'
     let vm = this;
     vm.blogs = [];
-    vm.numLimit = '1';
+    vm.count = 0;
+    // vm.numLimit = '1';
     // vm.newest;
     // vm.idUrl = [];
 
@@ -21,12 +22,14 @@ vm.getBlogs = function(){
             var blogId = data.data[i]._id;
             vm.idUrl = clientUrl + '/' + blogId;
             console.log(vm.idUrl);
+            // data.data[i].indexOf();
+            // console.log(data.data[i].indexOf());
             }
           });
+          vm.count =+ 1;
+          console.log(vm.count);
 };
-vm.readMore = function(){
-vm.numLimit = 1000;
-}
+
 
 vm.createBlog= function(blog){
     $http.post(blogUrl, blog)

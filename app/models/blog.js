@@ -15,13 +15,7 @@ module.exports = mongoose.model('Blog', {
     t_3: String,
     t_4: String
   }
-// var a = new A;
-//  a.imgURL.data = fs.readFileSync(imgPath);
-//  a.imgURL.contentType = 'image/png';
-//  a.save(function (err, a) {
-//    if (err) throw err;
 
-   console.error('saved img to mongo');
 
 
 });
