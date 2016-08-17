@@ -1,3 +1,4 @@
+'use strict';
 
 var express     = require('express');
 var app         = express();
@@ -8,7 +9,7 @@ var mongoose = require('mongoose');
 
 //config files
 
-var db = require('./config/db');
+var db = require('./config/db')
 
 //PORT
 
@@ -21,12 +22,12 @@ var router = express.Router();
 
 
 //CORS
-// app.use((req, res, next)=>{
-//   res.header('Access-Control-Allow-Origin', 'https://woof-republic.herokuapp.com/api/blogs');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token');
-//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
 //get all data
 // parse application/json
 app.use(bodyParser.json());
@@ -41,7 +42,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/build'));
 
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });

@@ -1,50 +1,71 @@
-
 'use strict';
 
-var gulp = require('gulp'), 
-sass = require('gulp-sass') ;
+const gulp = require('gulp');
+const webpack = require('webpack-stream');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+
+const sources = {
+  html: __dirname + '/public/**/*.html',
+  js: __dirname + '/public/js/**/*.js',
+  test: __dirname + '/test/*_spec.js',
+  images: __dirname + '/public/images/*',
+  libs: __dirname + '/public/libs/**/*'
+  // imgs: __dirname + '/app/**/*.jpg'
 
 
-var
-source = 'public/',
-dest = 'build/';
-
-var bootstrapSass = {
-  in: './bower_components/bootstrap-sass-official/'
 };
-
-var fonts = {
-  in: [source + 'fonts/*.*', bootstrapSass.in + 'assets/fonts/**/*'],
-  out: dest + 'fonts/'
-};
-
-var css = {
-  in: source + 'css/main.scss',
-  out: dest + 'css/',
-  watch: source + 'css/**/*',
-  sassOpts: {
-    outputStyle: 'nested',
-    precison: 3,
-    errLogToConsole: true,
-    includePaths: [bootstrapSass.in + 'assets/stylesheets']
-  }
-};
-
-
-gulp.task('fonts', function () {
-  return gulp
-  .src(fonts.in)
-  .pipe(gulp.dest(fonts.out));
+gulp.task('default', function() {
+  return gulp.src('./public/js/app.js')
+    .pipe(webpack())
+    .pipe(gulp.dest('build/'));
 });
 
-// compile scss
-gulp.task('sass', ['fonts'], function () {
-  return gulp.src(css.in)
-  .pipe(sass(css.sassOpts))
-  .pipe(gulp.dest(css.out));
+gulp.task('build:css', function() {
+  gulp.src('public/styles/new.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('build/'));
 });
 
-// default task
-gulp.task('default', ['sass'], function () {
-  gulp.watch(css.watch, ['sass']);
+gulp.task('bundle:dev', () => {
+  return gulp.src(sources.js)
+    .pipe(webpack({
+      output: {
+        filename: 'bundle.js'
+      }
+    }))
+    .pipe(gulp.dest('./build'));
 });
+
+gulp.task('copy:html', () => {
+  return gulp.src(sources.html)
+    .pipe(gulp.dest('./build'));
+});
+
+gulp.task('copy:libs', () => {
+  return gulp.src(sources.libs)
+    .pipe(gulp.dest('./build/libs'));
+});
+
+gulp.task('copy:image', () => {
+  return gulp.src(sources.images)
+    .pipe(gulp.dest('./build/images'));
+});
+// gulp.task('copy:imgs', () => {
+//   return gulp.src(sources.imgs)
+//     .pipe(gulp.dest('./build'));
+// });
+
+
+
+gulp.task('bundle:test', () => {
+  return gulp.src(sources.test)
+    .pipe(webpack({output: {filename: 'test_bundle.js'}}))
+    .pipe(gulp.dest('./test'));
+});
+
+
+
+gulp.task('default', ['bundle:dev', 'copy:image', 'copy:html','build:css','copy:libs','bundle:test']);
