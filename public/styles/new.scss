@@ -998,6 +998,16 @@ img::-moz-selection {
     background: 0 0;
 }
 
-body {
-    webkit-tap-highlight-color: #1ee2e7;
+// body {
+//     webkit-tap-highlight-color: #1ee2e7;
+// }
+.comments-list {
+margin-top: 5em;
+padding-top: 1em;
+background-color: grey;
+padding: 2em;
+overflow: scroll;
+height: 25em;
+z-index: 9;
+margin-top: -3em;
 }

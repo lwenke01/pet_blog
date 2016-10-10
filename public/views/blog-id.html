@@ -24,13 +24,21 @@
 									</p>
 									<p>
 									<span>	{{blog.author}} </span>
+									<a ng-click="commentShow = !commentShow"href="#"><span class="badge">{{blgCtrl.commentCount}}</span>Comments</a>
 
 									<a ng-click="show = !show"href="#">Leave a comment</a>
 									</p>
 								</div>
+								<div class="comments-list" ng-show="commentShow">
+									<h5>Comments</h5>
+									{{blog.comments}}
+
+							
+
+								</div>
 								<div class="comment-input" ng-show="show">
-									<form class="new-comment" ng-submit="blgCtrl.createBlog(blgCtrl.newBlog)">
-										<input class="input_comment" type="text"  placeholder="comments" ng-model="blgCtrl.newBlog.comments"/> <br>
+									<form class="new-comment" ng-submit="blgCtrl.addComment(blgCtrl.newComment)">
+										<input class="input_comment" type="text"  placeholder="comments" ng-model="blgCtrl.newComment.comments"/> <br>
 										<button type="submit">POST</button>
 									</form>
 

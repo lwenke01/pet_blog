@@ -6,7 +6,7 @@ angular.module('BlogCtrl', []).controller('BlogController',['$scope','$location'
   var clientUrl = 'http://localhost:8080/posts';
     var vm = this;
     vm.blogs = [];
-    vm.newComments = [];
+    vm.myComments = [];
 
     // vm.numLimit = '1';
     // vm.newest;
@@ -26,6 +26,8 @@ vm.getBlogs = function(){
             vm.commentCount = data.data[i].comments.length;
             console.log(vm.commentCount);
             // data.data[i].indexOf();
+            vm.test = data.data[i].comments;
+            console.log(vm.test);
             // console.log(data.data[i].indexOf());
             }
           });
@@ -47,8 +49,10 @@ vm.createBlog= function(blog){
 vm.addComment = function(comment){
   $http.post(blogUrl, comment)
     .then(function(res){
-      vm.newComments.push(res.data.comments);
-      console.log('new',vm.newComments);
+      vm.myComments.push(res.data.comments);
+      // console.log('new',vm.newComments);
+      vm.newComment = null;
+
 
     });
 
