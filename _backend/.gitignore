@@ -1,6 +1,6 @@
-build
+
 config
 test
-build
+instagram.js
 SETUP.md
 api/aws/output.js
