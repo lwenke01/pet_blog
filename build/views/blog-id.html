@@ -1,0 +1,50 @@
+
+
+<section id="portfolio" >
+
+		<div class="container">
+
+				<div class="row">
+						<div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="blog in blgCtrl.blogs">
+								<a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+										<div class="portfolio-hover">
+												<div class="portfolio-hover-content">
+														<i class="fa fa-plus fa-3x"></i>
+												</div>
+										</div>
+										<img src="http://cdn.lookanimals.com/pictures/iwallhd.com/stock/black-and-white-dog-wallpaper.jpg" height="400px" width="500" class="img-responsive" alt="">
+								</a>
+								<div class="portfolio-caption">
+										<h4>{{blog.title}}</h4> <br>
+										<p class="text-muted">{{blog.body}}</p>[..]<a href="#">..Read More</a>
+								</div>
+								<div class="portfolio-meta">
+									<p>
+										{{blog.date | date: MM/dd/yyyy}}
+									</p>
+									<p>
+									<span>	{{blog.author}} </span>
+									<a ng-click="commentShow = !commentShow"href="#"><span class="badge">{{blog.commentCount}}</span>Comments</a>
+
+									<a ng-click="show = !show"href="#">Leave a comment</a>
+									</p>
+								</div>
+								<div class="comments-list" ng-show="commentShow">
+									<h5>Comments</h5>
+									<!-- {{blog.comments.body}} -->
+<!--
+									{{blgCtrl.test.body}} -->
+								</div>
+								<div class="comment-input" ng-show="show">
+									<form class="new-comment" ng-submit="blgCtrl.addComment(blgCtrl.newComment)">
+										<input class="input_comment" type="text"  placeholder="comments" ng-model="blgCtrl.newComment.comments"/> <br>
+										<button type="submit">POST</button>
+									</form>
+
+
+								</div>
+						</div>
+
+				</div>
+		</div>
+</section>
