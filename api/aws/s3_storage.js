@@ -1,46 +1,19 @@
 'use strict';
 
 let promise = require('bluebird');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var xhr = new XMLHttpRequest();
+let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+let xhr = new XMLHttpRequest();
 let AWS = require('aws-sdk');
 let uuid = require('node-uuid');
 let _ = require('lodash');
 
-// function processData(data) {
-//   // taking care of data
-// }
-//
-// function handler() {
-//   if(this.status == 200 &&
-//     this.responseXML != null &&
-//     this.responseXML.getElementById('test').textContent) {
-//       // success!
-//       processData(this.responseXML.getElementById('test').textContent);
-//     } else {
-//       // something went wrong
-//
-//     }
-//   }
-//
-//   var client = new XMLHttpRequest();
-//   console.log(client);
-//   client.onload = handler;
-//   client.open("GET", "unicorn.xml");
-//   client.send();
-// // Create an S3 client
-// let s3 = new AWS.S3();
 
-// let url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=35010847.50ad594.be11ced7b6234fbfbfadc3793211e5ad';
 //set up Promise to handle the request
 function getPhotos(url) {
-
-  return new Promise(function(resolve, reject){
+return new Promise(function(resolve, reject){
     let request = new XMLHttpRequest();
-    // console.log(request);
-
     request.onload = function(){
-      // console.log(request);
+
       if(request.status === 200){
         resolve(request.responseText);
       } else {
@@ -56,23 +29,30 @@ function getPhotos(url) {
 
 getPhotos('https://api.instagram.com/v1/users/self/media/recent/?access_token=35010847.50ad594.be11ced7b6234fbfbfadc3793211e5ad')
 .then(function(response){
-  // console.log(JSON.stringify(response));
-    // console.log(JSON.parse(response.data));
-  // console.log(response.split('['));
   let newData= JSON.parse(response);
-  console.log(newData.data);
   for(var i = 0; i<newData.data.length; i++){
     let dataI = newData.data[i] ;
     let newId = dataI.id;
-    console.log(newId);
-    console.log(dataI);
+    // console.log(newId);
+    // console.log(dataI);
+    // console.log(dataI.id);
+    // console.log(dataI.caption);
     let s3 = new AWS.S3();
     let bucketName = 'zinstagram-images';
     let keyName = newId +'.txt';
+    // let string = JSON.stringify(dataI.tags);
+    let bodyContent =
+      ' id= '+ newId +
+      ' created_at= ' + dataI.created_time +
+      ' caption= ' + dataI.caption +
+      ' url= ' + dataI.link +
+      ' tags= ' + dataI.tags +
+      ' comments= ' + dataI.comments.count +
+      ' likes= '+ dataI.likes.count +
+      ' users in photo= ' + dataI.users_in_photo;
 
-    let bodyContent = JSON.stringify(dataI);
 
-    s3.createBucket({Bucket: bucketName}, function() {
+      s3.createBucket({Bucket: bucketName}, function() {
       var params = {Bucket: bucketName, Key: keyName, Body: bodyContent};
       s3.putObject(params, function(err, data) {
         if (err)
@@ -88,21 +68,24 @@ getPhotos('https://api.instagram.com/v1/users/self/media/recent/?access_token=35
 }, function (error){
   return error;
 });
+var s3 = new AWS.S3();
+var params = {Bucket: 'zinstagram-images', Key: '1368219168084436589_35010847.txt'};
+s3.getObject(params, function(err, data) {
+  if (err) console.log(err, err.stack); // an error occurred
+  else     console.log(data);           // successful response
+});
 
-
-
-// Create a bucket and upload something into it
-// var bucketName = 'zinstagram-images';
-// var keyName = 'hello_world.txt :'  + new Date();
-//
-// s3.createBucket({Bucket: bucketName}, function() {
-//   var params = {Bucket: bucketName, Key: keyName, Body: 'Hello World!'};
-//   s3.putObject(params, function(err, data) {
-//     if (err)
-//       console.log(err)
-//     else
-//       console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
-//   });
-// }, function(error){
-//   return error;
-// });
+var s3 = new AWS.S3();
+s3.listBuckets(function(err, data) {
+  if (err) { console.log("Error:", err); }
+  else {
+    for (var index in data.Buckets) {
+      var bucket = data.Buckets[index];
+      console.log("Bucket: ", bucket.Name, ' : ', bucket.CreationDate);
+    }
+  }
+});
+// zinstagram-images
+var s3 = new AWS.S3();
+var file = require('fs').createWriteStream('//Users/lisabisa25/desktop/file.txt');
+s3.getObject(params).createReadStream().pipe(file);

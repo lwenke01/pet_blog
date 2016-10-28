@@ -49,7 +49,7 @@ app.use(express.static(__dirname + '/build'));
 // });
 
 //routes
-require('./app/routes')(app);
+require('/api/routes')(app);
 app.use('/api', router);
 
 //start app
